@@ -1,7 +1,10 @@
 import { VStack, Box, Divider, Input, Icon } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
+import { useRecipeSearch } from '../store/RecipeSearch';
 
 const SearchBar = () => {
+  const { search, setSearch } = useRecipeSearch();
+
   return (
     <VStack
       my='4'
@@ -25,6 +28,9 @@ const SearchBar = () => {
           InputLeftElement={
             <Icon ml='2' size='4' color='gray.400' as={<Ionicons name='ios-search' />} />
           }
+          fontSize={16}
+          value={search}
+          onChangeText={(text) => setSearch(text)}
         />
       </VStack>
     </VStack>
