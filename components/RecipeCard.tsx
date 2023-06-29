@@ -12,7 +12,7 @@ const RecipeCard = ({
   servings: number;
 }) => {
   return (
-    <TouchableOpacity style={styles.card}>
+    <TouchableOpacity style={styles.card} testID='recipe-card'>
       <Image source={image} style={styles.image} />
       <View style={styles.info}>
         <Text style={styles.title}>{title}</Text>

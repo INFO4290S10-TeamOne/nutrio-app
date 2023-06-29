@@ -1,10 +1,9 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react-native';
+import renderer from 'react-test-renderer';
 
 import RecipesScreen from '../RecipesScreen';
 
 it('renders the recipes screen', () => {
-  render(<RecipesScreen />);
-
-  expect(screen.getByText('Recipes!')).toBeDefined();
+  const tree = renderer.create(<RecipesScreen />).toJSON();
+  expect(tree).toMatchSnapshot();
 });
