@@ -1,66 +1,94 @@
-import { TouchableOpacity, View, Text, StyleSheet, Image } from 'react-native';
+import { Box, Heading, AspectRatio, Image, Text, Center, HStack, Stack } from 'native-base';
 
 const RecipeCard = ({
   title,
+  category,
   image,
   time,
-  servings,
+  calories,
 }: {
   title: string;
+  category: string;
   image: any;
   time: number;
-  servings: number;
+  calories: number;
 }) => {
   return (
-    <TouchableOpacity style={styles.card} testID='recipe-card'>
-      <Image source={image} style={styles.image} />
-      <View style={styles.info}>
-        <Text style={styles.title}>{title}</Text>
-        <View style={styles.details}>
-          <Text style={styles.detail}>Time: {time} min</Text>
-          <Text style={styles.detail}>Servings: {servings}</Text>
-        </View>
-      </View>
-    </TouchableOpacity>
+    <Box alignItems='center'>
+      <Box
+        maxW='80'
+        rounded='lg'
+        overflow='hidden'
+        borderColor='coolGray.200'
+        borderWidth='1'
+        _dark={{
+          borderColor: 'coolGray.600',
+          backgroundColor: 'gray.700',
+        }}
+        _web={{
+          shadow: 2,
+          borderWidth: 0,
+        }}
+        _light={{
+          backgroundColor: 'gray.50',
+        }}
+      >
+        <Box>
+          <AspectRatio w='100%' ratio={16 / 9}>
+            <Image source={image} alt='image' resizeMode='cover' />
+          </AspectRatio>
+          <Center
+            bg='violet.500'
+            _dark={{
+              bg: 'violet.400',
+            }}
+            _text={{
+              color: 'warmGray.50',
+              fontWeight: '700',
+              fontSize: 'xs',
+            }}
+            position='absolute'
+            bottom='0'
+            px='3'
+            py='1.5'
+          >
+            {category}
+          </Center>
+        </Box>
+        <Stack p='4' space={3}>
+          <Stack space={2}>
+            <Heading size='md' ml='-1'>
+              {title}
+            </Heading>
+          </Stack>
+          <HStack alignItems='center' space={4} justifyContent='space-between'>
+            <HStack alignItems='center'>
+              <Text
+                color='coolGray.600'
+                _dark={{
+                  color: 'warmGray.200',
+                }}
+                fontWeight='400'
+              >
+                {calories} calories
+              </Text>
+            </HStack>
+            <HStack alignItems='center'>
+              <Text
+                color='coolGray.600'
+                _dark={{
+                  color: 'warmGray.200',
+                }}
+                fontWeight='400'
+              >
+                {time} min
+              </Text>
+            </HStack>
+          </HStack>
+        </Stack>
+      </Box>
+    </Box>
   );
 };
-
-const styles = StyleSheet.create({
-  card: {
-    width: '90%',
-    height: 220,
-    backgroundColor: '#fff',
-    borderRadius: 15,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 }, // only iOS
-    shadowOpacity: 0.25, // only iOS
-    shadowRadius: 3.84, // only iOS
-    elevation: 5, // only Android
-    marginBottom: 20,
-    alignSelf: 'center',
-  },
-  image: {
-    width: '100%',
-    height: 150,
-    borderTopLeftRadius: 15,
-    borderTopRightRadius: 15,
-  },
-  info: {
-    padding: 10,
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  details: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  detail: {
-    fontSize: 14,
-    color: 'gray',
-  },
-});
 
 export default RecipeCard;

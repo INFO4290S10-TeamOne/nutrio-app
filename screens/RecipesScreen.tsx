@@ -1,4 +1,5 @@
 import { View, ScrollView } from 'react-native';
+import { Box } from 'native-base';
 import SearchBar from '../components/SearchBar';
 import CuisineShortcut from '../components/CuisineShortcut';
 import RecipeCard from '../components/RecipeCard';
@@ -18,23 +19,26 @@ const recipes = [
   {
     id: 1,
     title: 'Chicken Parmesan',
+    category: 'Low Carb',
     image: require('../assets/favicon.png'),
     time: 30,
-    servings: 4,
+    calories: 400,
   },
   {
     id: 2,
     title: 'Chicken Parmesan',
+    category: 'Low Carb',
     image: require('../assets/favicon.png'),
     time: 30,
-    servings: 4,
+    calories: 400,
   },
   {
     id: 3,
     title: 'Chicken Parmesan',
+    category: 'Low Carb',
     image: require('../assets/favicon.png'),
     time: 30,
-    servings: 4,
+    calories: 400,
   },
 ];
 
@@ -58,16 +62,17 @@ const RecipesScreen = () => {
             marginVertical: 20,
           }}
         />
-
         {/* // Recipe cards */}
         {recipes.map((recipe) => (
-          <RecipeCard
-            key={recipe.id}
-            title={recipe.title}
-            image={recipe.image}
-            time={recipe.time}
-            servings={recipe.servings}
-          />
+          <Box key={recipe.id} marginBottom='5'>
+            <RecipeCard
+              title={recipe.title}
+              category={recipe.category}
+              image={recipe.image}
+              time={recipe.time}
+              calories={recipe.calories}
+            />
+          </Box>
         ))}
       </ScrollView>
     </View>

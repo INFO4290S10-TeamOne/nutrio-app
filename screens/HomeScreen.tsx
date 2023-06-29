@@ -1,16 +1,11 @@
 import { View, Text } from 'react-native';
+import { Box } from 'native-base';
 
 function HomeScreen() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
+    <Box flex={1} justifyContent='center' alignItems='center'>
       <Text>Home!</Text>
-    </View>
+    </Box>
   );
 }
 
