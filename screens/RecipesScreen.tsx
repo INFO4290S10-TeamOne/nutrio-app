@@ -8,7 +8,13 @@ const RecipesStack = createStackNavigator<RecipeStackParamList>();
 const RecipesScreen = () => {
   return (
     <RecipesStack.Navigator id='RecipesStack'>
-      <RecipesStack.Screen name='RecipeSearch' component={RecipesSearch} />
+      <RecipesStack.Screen
+        options={{
+          title: 'Recipes',
+        }}
+        name='RecipeSearch'
+        component={RecipesSearch}
+      />
       <RecipesStack.Screen
         options={({ route }) => ({ title: route.params.title })}
         name='RecipeDetails'

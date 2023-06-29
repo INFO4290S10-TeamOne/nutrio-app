@@ -28,6 +28,16 @@ const SearchBar = () => {
           InputLeftElement={
             <Icon ml='2' size='4' color='gray.400' as={<Ionicons name='ios-search' />} />
           }
+          InputRightElement={
+            search.length ? (
+              <Icon
+                mr='2'
+                size='4'
+                color='gray.400'
+                as={<Ionicons name='ios-close' onPress={() => setSearch('')} />}
+              />
+            ) : undefined
+          }
           fontSize={16}
           value={search}
           onChangeText={(text) => setSearch(text)}
