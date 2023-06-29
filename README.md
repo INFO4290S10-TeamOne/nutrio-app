@@ -10,6 +10,7 @@
   - [Installing](#installing)
   - [Environment Variables](#environment-variables)
 - [Start Expo](#start-expo)
+- [Native Base](#native-base)
 - [Folder Description](#folder-description)
 - [Testing](#testing)
 
@@ -70,6 +71,11 @@ i // to open iOS simulator (Macs)
 ```
 
 More details here: https://docs.expo.dev/tutorial/introduction/
+
+# Native Base
+
+We are using Native Base for our UI framework. It provides a bunch of components that makes design easier
+Check out the docs here: https://docs.nativebase.io/getting-started
 
 # Folder Description
 
