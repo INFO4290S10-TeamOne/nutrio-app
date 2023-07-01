@@ -13,6 +13,10 @@
 - [Native Base](#native-base)
 - [Folder Description](#folder-description)
 - [Testing](#testing)
+- [Git Flow](#git-flow)
+  - [General Rules](#general-rules)
+  - [Code Review](#code-review)
+  - [TL;DR](#tldr)
 
 # Getting Started
 
@@ -99,7 +103,7 @@ More details about writing tests soonTM - refer to the existing tests for now
 
 To maintain code quality and to prevent bugs from the `master` branch we should follow some guidelines when commiting our code.
 
-## General rules
+## General Rules
 
 - \***NEVER\*** push to `master`!
 - Update `master` frequently
