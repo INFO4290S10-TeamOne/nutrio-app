@@ -105,23 +105,38 @@ To maintain code quality and to prevent bugs from the `master` branch we should 
 
 ## General Rules
 
-- \***NEVER\*** push to `master`!
-- Update `master` frequently
+- \***NEVER\*** push to `master`
+- Update local `master` frequently
   - Run the command `git pull origin master` to pull the latest version
 - When working on new code, create a new branch with the command `git checkout -b <your-name>/<name-of-branch>`.
   - Your branch name should be describe the purpose of your branch such as what feature it implements. E.g `gunn/recipe-page`
   - Make sure that when you create a new branch, it is based off of the latest `master`
 
-## Code review
-When done working on your code, create a pull request.
+---
+To create a new branch based off the latest master run the following commands
+```bash
+git checkout master # switches the branch to master
+git pull origin master # fetches the lastest version of master
+git checkout -b <name-of-branch> # creates a new branch and switches to it
+```
 
-To push (upload) your code into GitHub run the command `git push origin <name-of-branch>`.
+## Code review
+### When done working on your code, create a pull request:
+
+To push (upload) your code into GitHub run the command 
+```bash
+git push origin <name-of-branch>
+```
+
+**Try to keep your changes small so that they are easier to review**
 
 Then you can come to this repo and there will be a shortcut for you to create a pull request.
 
-To prevent bad code from making it into `master`, there are some safeguards implemented on the `master` branch.
-- Code cannot be committed directly to `master`
-- Pull requests require at least **1** approval
+---
+
+### To prevent bad code from making it into `master`, there are some safeguards implemented on the `master` branch.
+1. Code cannot be committed directly to `master`
+2. Pull requests require at least **1** approval
 
 ### **Please check for pull requests frequently and review them. GitHub allows you to leave comments in pull requests so you can ask any questions or concerns there.**
 
