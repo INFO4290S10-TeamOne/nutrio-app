@@ -20,13 +20,14 @@
 
 # Getting Started
 
-### Prerequisites
+## Prerequisites
 
 - node v18.16.0
 - npm v9.5.1
 - git
+- [Expo](https://docs.expo.dev/get-started/installation/#requirements)
 
-### Node Version Manager (nvm)
+## Node Version Manager (nvm)
 
 It is recommended to use nvm for node and npm installations because some of our apps are compatible with specific versions of node/npm. nvm is an useful tool to hop around node versions.
 
@@ -36,12 +37,19 @@ Follow the installation instructions here: https://github.com/nvm-sh/nvm
 
   - `nvm install 18.16.0` or `nvm install --lts`
 
-- Switch to that version (You can also set 14.16.1 as the default version)
+- Switch to that version (You can also set 18.16.0 as the default version)
   - `nvm use 18.16.0` or `nvm use --lts`
 
 **if you are using a M1, you might run into an issue for wasm allocation failed, you can follow this article for solution:** https://shanabunny.com/?p=260
 
-### Installing
+## Installing
+
+Make sure you have all the prerequisites installed:
+Instructions for setting up Expo: https://docs.expo.dev/get-started/installation/#requirements
+
+You can run the app on your phone using the Expo app
+
+To run the app on your local machine, you will need the Android Simulator and iOS simulator (Mac only)
 
 Clone the repositorty
 
@@ -58,7 +66,7 @@ npm install
 
 Note: If other dependencies are added, you will need to run npm install again
 
-### Environment Variables
+## Environment Variables
 
 You will need to create a `.env` file with the API keys in the `nutrition-tracking-app` directory
 
@@ -88,7 +96,31 @@ Check out the docs here: https://docs.nativebase.io/getting-started
 - `components`: Folder to store any common and/or reuseable components, each component should have its own file
 - `helpers`: Contains common helper functions, can be grouped into files by type/domain
 - `screens`: Contains the main screens of the app (Home, Recipes, Scale, etc.)
+- `store`: Contains our zustand stores
+- `types`: Contains reusable types for Typescript
 
+## File Structure
+```
+  ├── assets
+  ├── components
+  |   ├── __tests__
+  |   |   └─ CusineShortcut.test.tsx
+  |   └── CusineShortcut.tsx
+  ├── helpers
+  |   ├── __tests__
+  |   |   └── getTabBarIcons.test.ts
+  |   └── getTabBarIcons.ts
+  ├── screens
+  |   ├── __tests__
+  |   |  └─ GoalsScreen.test.ts
+  |   ├── GoalsScreen.tsx
+  |   ├── HomeScreen.tsx
+  |   └── etc.
+  ├── store
+  │   └── RecipeSearch.ts
+  └── types
+      └── routes.ts
+```
 # Testing
 
 We are using Jest to run unit tests, run the following command to run the tests
