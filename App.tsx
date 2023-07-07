@@ -7,13 +7,14 @@ import RecipesScreen from './screens/RecipesScreen';
 import ScaleScreen from './screens/ScaleScreen';
 import GoalsScreen from './screens/GoalsScreen';
 import SettingsScreen from './screens/SettingsScreen';
+import LogScreen from './screens/LogScreen';
 import { getTabBarIcon } from './helpers/getTabBarIcon';
 import { NativeBaseProvider } from 'native-base';
 
 const Tab = createBottomTabNavigator();
 
 const TabBarIcon = (props: { name: any; color: string; size: number }) => {
-  return <FontAwesomeIcon icon={props.name} size={30} color='gray' />;
+  return <FontAwesomeIcon icon={props.name} size={30} color={props.color} />;
 };
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
               const iconName = getTabBarIcon(route.name);
               return TabBarIcon({ name: iconName, color, size });
             },
+            tabBarActiveTintColor: '#8b5cf6',
           })}
         >
           <Tab.Screen name='Home' component={HomeScreen} />
@@ -33,6 +35,7 @@ export default function App() {
           <Tab.Screen name='Scale' component={ScaleScreen} />
           <Tab.Screen name='Goals' component={GoalsScreen} />
           <Tab.Screen name='Settings' component={SettingsScreen} />
+          <Tab.Screen name='Log' component={LogScreen} />
         </Tab.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
