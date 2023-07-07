@@ -1,59 +1,9 @@
 import { useNavigation } from '@react-navigation/native';
 import { HStack, VStack, FlatList, Box, Text, Avatar, IconButton, Icon, Spacer } from 'native-base';
 import { Feather } from '@expo/vector-icons';
+import { Log } from '../types/logs';
 
-const log = [
-  {
-    id: 1,
-    date: new Date(),
-    itemName: 'Chicken Parmesan',
-    servings: 2,
-    thumbnail:
-      'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-  },
-  {
-    id: 2,
-    date: new Date(),
-    itemName: 'Chicken Parmesan',
-    servings: 2,
-    thumbnail:
-      'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-  },
-  {
-    id: 3,
-    date: new Date(),
-    itemName: 'Chicken Parmesan',
-    servings: 2,
-    thumbnail:
-      'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-  },
-  {
-    id: 4,
-    date: new Date(),
-    itemName: 'Chicken Parmesan',
-    servings: 2,
-    thumbnail:
-      'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-  },
-  {
-    id: 5,
-    date: new Date(),
-    itemName: 'Chicken Parmesan',
-    servings: 2,
-    thumbnail:
-      'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-  },
-  {
-    id: 6,
-    date: new Date(),
-    itemName: 'Chicken Parmesan',
-    servings: 2,
-    thumbnail:
-      'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-  },
-];
-
-const LogList = () => {
+const LogList = ({ log }: { log: Log[] }) => {
   const navigation = useNavigation();
   return (
     <FlatList
@@ -105,7 +55,7 @@ const LogList = () => {
                 color='coolGray.800'
                 alignSelf='flex-start'
               >
-                {item.date.toLocaleDateString()} {item.date.toLocaleTimeString()}
+                {item.date.toLocaleTimeString()}
               </Text>
               <IconButton
                 alignSelf={'flex-end'}
