@@ -1,5 +1,6 @@
-import { Box, Heading, Text } from 'native-base';
+import { Box, Heading, Text, ScrollView, Icon } from 'native-base';
 import LogList from '../components/LogList';
+import { Octicons } from '@expo/vector-icons';
 
 const log = [
   {
@@ -52,20 +53,47 @@ const log = [
   },
 ];
 
+const allLogs = [
+  {
+    id: 1,
+    date: new Date(),
+  },
+  {
+    id: 2,
+    date: new Date('2023-07-01'),
+  },
+  {
+    id: 3,
+    date: new Date('2023-06-30'),
+  },
+  {
+    id: 4,
+    date: new Date('2023-06-29'),
+  },
+];
+
 const LogScreen = () => {
-  const today = new Date();
-
-  const filteredLog = log.filter((item) => {
-    return item.date.toLocaleDateString() === today.toLocaleDateString();
-  });
-
   return (
-    <Box flex='1' margin={5}>
-      <Heading>
-        <Text>{today.toLocaleDateString()}</Text>
-      </Heading>
-      <LogList log={filteredLog} />
-    </Box>
+    <ScrollView>
+      <Box flex='1' margin={5}>
+        {allLogs
+          .sort((date1, date2) => date2.date.getTime() - date1.date.getTime())
+          .map((item) => {
+            const filteredLog = log.filter(
+              (logItem) => logItem.date.toLocaleDateString() === item.date.toLocaleDateString()
+            );
+            return (
+              <Box key={item.id} mb={10}>
+                <Heading alignItems='center' onPress={() => console.log('pressed')}>
+                  <Text>{item.date.toLocaleDateString()} </Text>
+                  <Icon as={Octicons} name='chevron-right' size='lg' />
+                </Heading>
+                <LogList log={filteredLog} />
+              </Box>
+            );
+          })}
+      </Box>
+    </ScrollView>
   );
 };
 

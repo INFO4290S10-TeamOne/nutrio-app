@@ -5,6 +5,29 @@ import { Log } from '../types/logs';
 
 const LogList = ({ log }: { log: Log[] }) => {
   const navigation = useNavigation();
+  if (!log.length)
+    return (
+      <Box
+        borderBottomWidth='1'
+        _dark={{
+          borderColor: 'muted.50',
+        }}
+        borderColor='muted.800'
+        pl={['0', '4']}
+        pr={['0', '5']}
+        py='2'
+      >
+        <Text
+          _dark={{
+            color: 'warmGray.50',
+          }}
+          color='coolGray.800'
+          bold
+        >
+          No items recorded
+        </Text>
+      </Box>
+    );
   return (
     <FlatList
       data={log}
