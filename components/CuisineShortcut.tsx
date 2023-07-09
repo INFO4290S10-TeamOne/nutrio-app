@@ -1,8 +1,11 @@
 import { Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { useRecipeSearch } from '../store/RecipeSearch';
 
 const CuisineShortcut = ({ title, image }: { title: string; image: any }) => {
+  const { setSearch } = useRecipeSearch();
+
   return (
-    <TouchableOpacity style={styles.button} onPress={() => console.log(title)}>
+    <TouchableOpacity style={styles.button} onPress={() => setSearch(title)}>
       <Image source={image} style={{ width: 50, height: 50, resizeMode: 'cover' }} />
       <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>
