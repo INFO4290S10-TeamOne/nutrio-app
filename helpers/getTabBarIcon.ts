@@ -8,9 +8,9 @@ import {
 
 export const getTabBarIcon = (routeName: string) => {
   switch (routeName) {
-    case 'HomeStack':
+    case 'Home':
       return faHome;
-    case 'RecipesStack':
+    case 'Recipes':
       return faBook;
     case 'Scale':
       return faBalanceScale;
