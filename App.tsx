@@ -34,6 +34,7 @@ export default function App() {
           <Tab.Screen
             options={{
               headerShown: false,
+              tabBarLabel: 'Home',
             }}
             name='HomeStack'
             component={HomeStack}
@@ -41,6 +42,7 @@ export default function App() {
           <Tab.Screen
             options={{
               headerShown: false,
+              tabBarLabel: 'Recipes',
             }}
             name='RecipesStack'
             component={RecipesStack}
