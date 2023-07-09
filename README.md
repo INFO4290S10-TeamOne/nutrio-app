@@ -68,7 +68,9 @@ Note: If other dependencies are added, you will need to run npm install again
 
 ## Environment Variables
 
-You will need to create a `.env` file with the API keys in the `nutrition-tracking-app` directory
+### **The API key should never be in plain text**
+
+You will need to create a `.env` file with the API keys in the root directory
 
 Message Gunn for the API keys
 
