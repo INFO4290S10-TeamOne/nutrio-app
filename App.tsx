@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { NavigationContainer, NavigatorScreenParams } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import HomeScreen from './screens/HomeScreen';
@@ -43,7 +43,13 @@ export default function App() {
           <Tab.Screen name='Scale' component={ScaleScreen} />
           <Tab.Screen name='Goals' component={GoalsScreen} />
           <Tab.Screen name='Settings' component={SettingsScreen} />
-          <Tab.Screen name='Log' component={LogScreen} />
+          <Tab.Screen
+            name='Log'
+            options={{
+              headerShown: false,
+            }}
+            component={LogScreen}
+          />
         </Tab.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

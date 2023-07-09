@@ -1,10 +1,21 @@
-import { useNavigation } from '@react-navigation/native';
-import { HStack, VStack, FlatList, Box, Text, Avatar, IconButton, Icon, Spacer } from 'native-base';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { HStack, VStack, Box, Text, Avatar, IconButton, Icon, Spacer } from 'native-base';
 import { Feather } from '@expo/vector-icons';
 import { Log } from '../types/logs';
+import { TabParamList } from '../types/routes';
+import LogItem from './LogItem';
 
-const LogList = ({ log }: { log: Log[] }) => {
-  const navigation = useNavigation();
+interface LogListProps {
+  date: string;
+  log: Log[];
+}
+
+const LogList = ({ date, log }: LogListProps) => {
+  const navigation = useNavigation<NavigationProp<TabParamList>>();
+
+  const truncateLog = log.length > 3;
+  const slicedLog = truncateLog ? log.slice(0, 3) : log;
+
   if (!log.length)
     return (
       <Box
@@ -29,9 +40,11 @@ const LogList = ({ log }: { log: Log[] }) => {
       </Box>
     );
   return (
-    <FlatList
-      data={log}
-      renderItem={({ item }) => (
+    <>
+      {slicedLog.map((item) => (
+        <LogItem key={item.id} logItem={item} />
+      ))}
+      {truncateLog ? (
         <Box
           borderBottomWidth='1'
           _dark={{
@@ -42,58 +55,24 @@ const LogList = ({ log }: { log: Log[] }) => {
           pr={['0', '5']}
           py='2'
         >
-          <HStack space={[2, 3]} justifyContent='space-between'>
-            <Avatar
-              size='48px'
-              source={{
-                uri: item.thumbnail,
-              }}
-            />
-            <VStack>
-              <Text
-                _dark={{
-                  color: 'warmGray.50',
-                }}
-                color='coolGray.800'
-                bold
-              >
-                {item.itemName}
-              </Text>
-              <Text
-                color='coolGray.600'
-                _dark={{
-                  color: 'warmGray.200',
-                }}
-              >
-                Servings: {item.servings}
-              </Text>
-            </VStack>
-            <Spacer />
-            <VStack>
-              <Text
-                fontSize='xs'
-                _dark={{
-                  color: 'warmGray.50',
-                }}
-                color='coolGray.800'
-                alignSelf='flex-start'
-              >
-                {item.date.toLocaleTimeString()}
-              </Text>
-              <IconButton
-                alignSelf={'flex-end'}
-                size='md'
-                colorScheme={'violet'}
-                rounded='full'
-                icon={<Icon as={Feather} name='info' />}
-                onPress={() => navigation.navigate('Home')}
-              />
-            </VStack>
-          </HStack>
+          <Text
+            onPress={() =>
+              navigation.navigate('Log', {
+                screen: 'LogDetails',
+                params: { date, logItems: log },
+              })
+            }
+            alignSelf='center'
+            color='coolGray.600'
+            _dark={{
+              color: 'warmGray.200',
+            }}
+          >
+            {log.length - 3} more items...
+          </Text>
         </Box>
-      )}
-      keyExtractor={(item) => item.id.toString()}
-    />
+      ) : null}
+    </>
   );
 };
 

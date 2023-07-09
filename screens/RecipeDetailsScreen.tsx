@@ -1,4 +1,4 @@
-import { ScrollView, VStack, Box, Divider, Icon, Image, Text } from 'native-base';
+import { ScrollView, VStack, Box, Image, Text } from 'native-base';
 import { useRoute } from '@react-navigation/native';
 import { RecipeDetailsRouteProps } from '../types/routes';
 
