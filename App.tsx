@@ -35,14 +35,14 @@ export default function App() {
             options={{
               headerShown: false,
             }}
-            name='Home'
+            name='HomeStack'
             component={HomeStack}
           />
           <Tab.Screen
             options={{
               headerShown: false,
             }}
-            name='Recipes'
+            name='RecipesStack'
             component={RecipesStack}
           />
           <Tab.Screen name='Scale' component={ScaleScreen} />

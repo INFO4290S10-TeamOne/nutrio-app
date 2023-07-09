@@ -2,8 +2,8 @@ import { NavigatorScreenParams, RouteProp } from '@react-navigation/native';
 import { Log } from './logs';
 
 export type TabParamList = {
-  Home: NavigatorScreenParams<HomeStackParamList>;
-  Recipes: NavigatorScreenParams<RecipeStackParamList>;
+  HomeStack: NavigatorScreenParams<HomeStackParamList>;
+  RecipesStack: NavigatorScreenParams<RecipeStackParamList>;
   Scale: undefined;
   Goals: undefined;
   Settings: undefined;
