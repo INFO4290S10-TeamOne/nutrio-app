@@ -1,6 +1,6 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { Box, Heading, Text, ScrollView, Icon } from 'native-base';
-import LogList from './LogList';
+import LogList from '../components/LogList';
 import { Octicons } from '@expo/vector-icons';
 import { TabParamList } from '../types/routes';
 
@@ -106,9 +106,12 @@ const LogHistoryScreen = () => {
                 <Heading
                   alignItems='center'
                   onPress={() =>
-                    navigation.navigate('Log', {
-                      screen: 'LogDetails',
-                      params: { date: item.date.toLocaleDateString(), logItems: filteredLog },
+                    navigation.navigate('HomeStack', {
+                      screen: 'LogsStack',
+                      params: {
+                        screen: 'LogDetails',
+                        params: { date: item.date.toLocaleDateString(), logItems: filteredLog },
+                      },
                     })
                   }
                 >

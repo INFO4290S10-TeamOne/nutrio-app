@@ -1,27 +1,27 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import RecipesSearch from '../components/RecipesSearch';
-import RecipeDetailsScreen from './RecipeDetailsScreen';
+import RecipesSearch from '../screens/RecipesSearchScreen';
+import RecipeDetailsScreen from '../screens/RecipeDetailsScreen';
 import { RecipeStackParamList } from '../types/routes';
 
-const RecipesStack = createStackNavigator<RecipeStackParamList>();
+const Stack = createStackNavigator<RecipeStackParamList>();
 
-const RecipesScreen = () => {
+const RecipesStack = () => {
   return (
-    <RecipesStack.Navigator id='RecipesStack'>
-      <RecipesStack.Screen
+    <Stack.Navigator id='RecipesStack'>
+      <Stack.Screen
         options={{
           title: 'Recipes',
         }}
         name='RecipeSearch'
         component={RecipesSearch}
       />
-      <RecipesStack.Screen
+      <Stack.Screen
         options={({ route }) => ({ title: route.params.title })}
         name='RecipeDetails'
         component={RecipeDetailsScreen}
       />
-    </RecipesStack.Navigator>
+    </Stack.Navigator>
   );
 };
 
-export default RecipesScreen;
+export default RecipesStack;

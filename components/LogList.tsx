@@ -57,9 +57,12 @@ const LogList = ({ date, log }: LogListProps) => {
         >
           <Text
             onPress={() =>
-              navigation.navigate('Log', {
-                screen: 'LogDetails',
-                params: { date, logItems: log },
+              navigation.navigate('HomeStack', {
+                screen: 'LogsStack',
+                params: {
+                  screen: 'LogDetails',
+                  params: { date, logItems: log },
+                },
               })
             }
             alignSelf='center'
