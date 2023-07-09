@@ -1,16 +1,4 @@
-import {
-  HStack,
-  VStack,
-  Box,
-  Text,
-  Avatar,
-  IconButton,
-  Icon,
-  Spacer,
-  FlatList,
-  Heading,
-} from 'native-base';
-import { Feather } from '@expo/vector-icons';
+import { Box, FlatList } from 'native-base';
 import { useRoute } from '@react-navigation/native';
 import { LogDetailsRouteProps } from '../types/routes';
 import LogItem from '../components/LogItem';
