@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { NavigationContainer, NavigatorScreenParams } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import HomeScreen from './screens/HomeScreen';
-import RecipesScreen from './screens/RecipesScreen';
+import HomeStack from './components/HomeStack';
+import RecipesStack from './components/RecipesStack';
 import ScaleScreen from './screens/ScaleScreen';
 import GoalsScreen from './screens/GoalsScreen';
 import SettingsScreen from './screens/SettingsScreen';
@@ -28,15 +28,24 @@ export default function App() {
               const iconName = getTabBarIcon(route.name);
               return TabBarIcon({ name: iconName, color, size });
             },
+            tabBarActiveTintColor: '#8b5cf6',
           })}
         >
-          <Tab.Screen name='Home' component={HomeScreen} />
           <Tab.Screen
             options={{
               headerShown: false,
+              tabBarLabel: 'Home',
             }}
-            name='Recipes'
-            component={RecipesScreen}
+            name='HomeStack'
+            component={HomeStack}
+          />
+          <Tab.Screen
+            options={{
+              headerShown: false,
+              tabBarLabel: 'Recipes',
+            }}
+            name='RecipesStack'
+            component={RecipesStack}
           />
           <Tab.Screen name='Scale' component={ScaleScreen} />
           <Tab.Screen name='Goals' component={GoalsScreen} />

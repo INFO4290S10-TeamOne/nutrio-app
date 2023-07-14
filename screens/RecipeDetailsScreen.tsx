@@ -1,4 +1,4 @@
-import { ScrollView, VStack, Box, Divider, Icon, Image, Text } from 'native-base';
+import { ScrollView, VStack, Box, Image, Text } from 'native-base';
 import { useRoute } from '@react-navigation/native';
 import { RecipeDetailsRouteProps } from '../types/routes';
 
@@ -48,7 +48,7 @@ const recipeDetails = {
 };
 
 const RecipeDetailsScreen = () => {
-  const { id, title } = useRoute<RecipeDetailsRouteProps>().params;
+  const { title } = useRoute<RecipeDetailsRouteProps>().params;
   return (
     <ScrollView>
       <VStack space={4} alignItems='center'>
@@ -72,16 +72,16 @@ const RecipeDetailsScreen = () => {
             <Text fontSize='lg' fontWeight='bold'>
               Ingredients
             </Text>
-            {recipeDetails.ingredients.map((ingredient, index) => (
-              <Text key={index}>{ingredient}</Text>
+            {recipeDetails.ingredients.map((ingredient) => (
+              <Text key={ingredient}>{ingredient}</Text>
             ))}
           </VStack>
           <VStack width='100%' space={4}>
             <Text fontSize='lg' fontWeight='bold'>
               Directions
             </Text>
-            {recipeDetails.directions.map((direction, index) => (
-              <Text key={index}>{direction}</Text>
+            {recipeDetails.directions.map((direction) => (
+              <Text key={direction}>{direction}</Text>
             ))}
           </VStack>
         </VStack>

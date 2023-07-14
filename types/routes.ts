@@ -1,11 +1,17 @@
 import { NavigatorScreenParams, RouteProp } from '@react-navigation/native';
+import { Log } from './logs';
 
 export type TabParamList = {
-  Home: undefined;
-  Recipes: NavigatorScreenParams<RecipeStackParamList>;
+  HomeStack: NavigatorScreenParams<HomeStackParamList>;
+  RecipesStack: NavigatorScreenParams<RecipeStackParamList>;
   Scale: undefined;
   Goals: undefined;
   Settings: undefined;
+};
+
+export type HomeStackParamList = {
+  Home: undefined;
+  LogsStack: NavigatorScreenParams<LogsStackParamList>;
 };
 
 export type RecipeStackParamList = {
@@ -16,4 +22,14 @@ export type RecipeStackParamList = {
   };
 };
 
+export type LogsStackParamList = {
+  LogHistory: undefined;
+  LogDetails: {
+    date: string;
+    logItems: Log[];
+  };
+};
+
 export type RecipeDetailsRouteProps = RouteProp<{ params: { id: number; title: string } }>;
+
+export type LogDetailsRouteProps = RouteProp<{ params: { date: string; logItems: Log[] } }>;

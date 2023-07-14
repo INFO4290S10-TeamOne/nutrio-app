@@ -23,7 +23,7 @@ const RecipeCard = ({
   return (
     <TouchableOpacity
       onPress={() =>
-        navigation.navigate('Recipes', { screen: 'RecipeDetails', params: { id, title } })
+        navigation.navigate('RecipesStack', { screen: 'RecipeDetails', params: { id, title } })
       }
     >
       <Box alignItems='center'>

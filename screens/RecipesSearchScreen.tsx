@@ -1,5 +1,4 @@
-import { View, ScrollView } from 'react-native';
-import { Box } from 'native-base';
+import { Box, Divider, ScrollView, View } from 'native-base';
 import SearchBar from '../components/SearchBar';
 import CuisineShortcut from '../components/CuisineShortcut';
 import RecipeCard from '../components/RecipeCard';
@@ -44,7 +43,7 @@ const recipes = [
 
 const RecipesSearch = () => {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <Box flex='1' m={5}>
       <SearchBar />
       <ScrollView>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
@@ -52,16 +51,7 @@ const RecipesSearch = () => {
             <CuisineShortcut key={cuisine.id} title={cuisine.title} image={cuisine.image} />
           ))}
         </ScrollView>
-        {/* Divider */}
-        <View
-          style={{
-            borderBottomColor: '#ccc',
-            borderBottomWidth: 1,
-            width: '90%',
-            alignSelf: 'center',
-            marginVertical: 20,
-          }}
-        />
+        <Divider my={5} />
         {/* // Recipe cards */}
         {recipes.map((recipe) => (
           <Box key={recipe.id} marginBottom='5'>
@@ -76,7 +66,7 @@ const RecipesSearch = () => {
           </Box>
         ))}
       </ScrollView>
-    </View>
+    </Box>
   );
 };
 

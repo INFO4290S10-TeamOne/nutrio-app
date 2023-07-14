@@ -9,11 +9,11 @@ import {
 
 describe('getTabBarIcon', () => {
   it('returns faHome when routeName is Home', () => {
-    expect(getTabBarIcon('Home')).toEqual(faHome);
+    expect(getTabBarIcon('HomeStack')).toEqual(faHome);
   });
 
   it('returns faBook when routeName is Recipes', () => {
-    expect(getTabBarIcon('Recipes')).toEqual(faBook);
+    expect(getTabBarIcon('RecipesStack')).toEqual(faBook);
   });
 
   it('returns faBalanceScale when routeName is Scale', () => {
