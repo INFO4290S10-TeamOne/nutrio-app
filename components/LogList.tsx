@@ -1,6 +1,5 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { HStack, VStack, Box, Text, Avatar, IconButton, Icon, Spacer } from 'native-base';
-import { Feather } from '@expo/vector-icons';
+import { Box, Text } from 'native-base';
 import { Log } from '../types/logs';
 import { TabParamList } from '../types/routes';
 import LogListItem from './LogListItem';

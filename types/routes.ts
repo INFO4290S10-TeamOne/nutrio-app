@@ -28,6 +28,7 @@ export type LogsStackParamList = {
     date: string;
     logItems: Log;
   };
+  AddLog: undefined;
 };
 
 export type RecipeDetailsRouteProps = RouteProp<{ params: { id: number; title: string } }>;

@@ -1,165 +1,9 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { Box, Heading, Text, ScrollView, Icon, View } from 'native-base';
+import { Box, Heading, Text, ScrollView, Icon } from 'native-base';
 import { Octicons } from '@expo/vector-icons';
 import { useLogsStore } from '../store/LogsStore';
 import LogList from '../components/LogList';
 import { TabParamList } from '../types/routes';
-import { Log } from '../types/logs';
-
-const defaultLogs: Log[] = [
-  {
-    id: 1,
-    date: new Date().toLocaleDateString(),
-    items: [
-      {
-        id: 1,
-        date: new Date().toLocaleDateString(),
-        itemName: 'Chicken Parmesan',
-        servings: 2,
-        thumbnail:
-          'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-      },
-      {
-        id: 2,
-        date: new Date().toLocaleDateString(),
-        itemName: 'Chicken Parmesan',
-        servings: 2,
-        thumbnail:
-          'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-      },
-      {
-        id: 3,
-        date: new Date().toLocaleDateString(),
-        itemName: 'Chicken Parmesan',
-        servings: 2,
-        thumbnail:
-          'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-      },
-      {
-        id: 4,
-        date: new Date().toLocaleDateString(),
-        itemName: 'Chicken Parmesan',
-        servings: 2,
-        thumbnail:
-          'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-      },
-    ],
-  },
-  {
-    id: 1,
-    date: new Date().toLocaleDateString(),
-    items: [
-      {
-        id: 1,
-        date: new Date().toLocaleDateString(),
-        itemName: 'Chicken Parmesan',
-        servings: 2,
-        thumbnail:
-          'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-      },
-      {
-        id: 2,
-        date: new Date().toLocaleDateString(),
-        itemName: 'Chicken Parmesan',
-        servings: 2,
-        thumbnail:
-          'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-      },
-      {
-        id: 3,
-        date: new Date().toLocaleDateString(),
-        itemName: 'Chicken Parmesan',
-        servings: 2,
-        thumbnail:
-          'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-      },
-      {
-        id: 4,
-        date: new Date().toLocaleDateString(),
-        itemName: 'Chicken Parmesan',
-        servings: 2,
-        thumbnail:
-          'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-      },
-    ],
-  },
-  {
-    id: 2,
-    date: new Date().toLocaleDateString(),
-    items: [
-      {
-        id: 1,
-        date: new Date().toLocaleDateString(),
-        itemName: 'Chicken Parmesan',
-        servings: 2,
-        thumbnail:
-          'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-      },
-      {
-        id: 2,
-        date: new Date().toLocaleDateString(),
-        itemName: 'Chicken Parmesan',
-        servings: 2,
-        thumbnail:
-          'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-      },
-      {
-        id: 3,
-        date: new Date().toLocaleDateString(),
-        itemName: 'Chicken Parmesan',
-        servings: 2,
-        thumbnail:
-          'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-      },
-      {
-        id: 4,
-        date: new Date().toLocaleDateString(),
-        itemName: 'Chicken Parmesan',
-        servings: 2,
-        thumbnail:
-          'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-      },
-    ],
-  },
-  {
-    id: 3,
-    date: new Date().toLocaleDateString(),
-    items: [
-      {
-        id: 1,
-        date: new Date().toLocaleDateString(),
-        itemName: 'Chicken Parmesan',
-        servings: 2,
-        thumbnail:
-          'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-      },
-      {
-        id: 2,
-        date: new Date().toLocaleDateString(),
-        itemName: 'Chicken Parmesan',
-        servings: 2,
-        thumbnail:
-          'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-      },
-      {
-        id: 3,
-        date: new Date().toLocaleDateString(),
-        itemName: 'Chicken Parmesan',
-        servings: 2,
-        thumbnail:
-          'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-      },
-      {
-        id: 4,
-        date: new Date().toLocaleDateString(),
-        itemName: 'Chicken Parmesan',
-        servings: 2,
-        thumbnail:
-          'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-      },
-    ],
-  },
-];
 
 const LogHistoryScreen = () => {
   const navigation = useNavigation<NavigationProp<TabParamList>>();
@@ -186,7 +30,7 @@ const LogHistoryScreen = () => {
                 })
               }
             >
-              <Text>{logItem.date}</Text>
+              <Text>{logItem.date} </Text>
               <Icon as={Octicons} name='chevron-right' size='lg' />
             </Heading>
             <LogList date={logItem.date} key={logItem.id} log={logItem} />
