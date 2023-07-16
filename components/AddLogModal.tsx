@@ -11,13 +11,22 @@ import {
   ScrollView,
 } from 'native-base';
 import { Feather } from '@expo/vector-icons';
+import { useRoute } from '@react-navigation/native';
+import { AddLogRouteProps } from '../types/routes';
+import { useLogsStore } from '../store/LogsStore';
 
 const NewItem = ({
   id,
+  itemName,
+  servings,
+  thumbnail,
   updateItem,
   deleteItem,
 }: {
   id: number;
+  itemName: string;
+  servings: number;
+  thumbnail: string;
   updateItem: (id: number, field: 'itemName' | 'servings' | 'thumbnail', itemName: string) => void;
   deleteItem: (id: number) => void;
 }) => {
@@ -41,6 +50,7 @@ const NewItem = ({
           <FormControl.Label>Item Name</FormControl.Label>
           <Input
             p={2}
+            value={itemName}
             placeholder='Item Name'
             onChangeText={(e) => updateItem(id, 'itemName', e)}
           />
@@ -49,6 +59,7 @@ const NewItem = ({
           <FormControl.Label>Servings</FormControl.Label>
           <Input
             p={2}
+            value={servings.toString()}
             placeholder='Servings'
             keyboardType='number-pad'
             onChangeText={(e) => updateItem(id, 'servings', e)}
@@ -58,6 +69,7 @@ const NewItem = ({
           <FormControl.Label>Thumbnail</FormControl.Label>
           <Input
             p={2}
+            value={thumbnail}
             placeholder='Thumbnail'
             onChangeText={(e) => updateItem(id, 'thumbnail', e)}
           />
@@ -68,6 +80,9 @@ const NewItem = ({
 };
 
 const AddLogModal = () => {
+  const { params } = useRoute<AddLogRouteProps>();
+  const { logs } = useLogsStore();
+  const [logDate, setLogDate] = useState('');
   const [items, setItems] = useState([
     {
       id: 0,
@@ -78,8 +93,16 @@ const AddLogModal = () => {
   ]);
 
   useEffect(() => {
-    console.log('items', items);
-  }, [items]);
+    if (params.edit) {
+      const logToEdit = logs.find((log) => log.id === params.id);
+      if (logToEdit?.items) {
+        setLogDate(logToEdit.date);
+        setItems(logToEdit.items);
+      }
+    } else {
+      console.log('new');
+    }
+  }, [params]);
 
   const updateItem = (
     id: number,
@@ -112,10 +135,18 @@ const AddLogModal = () => {
           <Stack space={5}>
             <Stack>
               <FormControl.Label>Date</FormControl.Label>
-              <Input p={2} placeholder={new Date().toLocaleDateString()} />
+              <Input p={2} placeholder={new Date().toLocaleDateString()} value={logDate} />
             </Stack>
             {items.map((item) => (
-              <NewItem key={item.id} id={item.id} updateItem={updateItem} deleteItem={deleteItem} />
+              <NewItem
+                key={item.id}
+                id={item.id}
+                itemName={item.itemName}
+                servings={item.servings}
+                thumbnail={item.thumbnail}
+                updateItem={updateItem}
+                deleteItem={deleteItem}
+              />
             ))}
           </Stack>
           <Stack>

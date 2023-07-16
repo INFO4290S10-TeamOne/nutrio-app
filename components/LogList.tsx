@@ -60,7 +60,7 @@ const LogList = ({ date, log }: LogListProps) => {
                 screen: 'LogsStack',
                 params: {
                   screen: 'LogDetails',
-                  params: { date, logItems: log },
+                  params: { date, id: log.id, logItems: log },
                 },
               })
             }

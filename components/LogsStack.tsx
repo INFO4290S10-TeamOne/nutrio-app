@@ -25,6 +25,9 @@ const LogsStack = () => {
                     screen: 'LogsStack',
                     params: {
                       screen: 'AddLog',
+                      params: {
+                        edit: false,
+                      },
                     },
                   })
                 }
@@ -35,7 +38,26 @@ const LogsStack = () => {
           component={LogHistoryScreen}
         />
         <Stack.Screen
-          options={({ route }) => ({ title: route.params.date })}
+          options={({ route }) => ({
+            title: route.params.date,
+            headerRight: () => (
+              <HeaderButton
+                iconName='edit'
+                onPress={() =>
+                  navigation.navigate('HomeStack', {
+                    screen: 'LogsStack',
+                    params: {
+                      screen: 'AddLog',
+                      params: {
+                        edit: true,
+                        id: route.params.id,
+                      },
+                    },
+                  })
+                }
+              />
+            ),
+          })}
           name='LogDetails'
           component={LogDetailsScreen}
         />
@@ -44,9 +66,10 @@ const LogsStack = () => {
         <Stack.Screen
           name='AddLog'
           component={AddLogModal}
-          options={{
+          options={({ route }) => ({
+            title: route.params.edit ? 'Edit Log' : 'Add Log',
             headerRight: () => <HeaderButton iconName='save' onPress={() => console.log('save')} />,
-          }}
+          })}
         />
       </Stack.Group>
     </Stack.Navigator>

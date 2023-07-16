@@ -25,7 +25,7 @@ const LogHistoryScreen = () => {
                   screen: 'LogsStack',
                   params: {
                     screen: 'LogDetails',
-                    params: { date: logItem.date, logItems: logItem },
+                    params: { date: logItem.date, id: logItem.id, logItems: logItem },
                   },
                 })
               }
