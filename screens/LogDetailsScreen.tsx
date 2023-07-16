@@ -8,7 +8,7 @@ const LogDetailsScreen = () => {
   return (
     <Box flex='1' margin={5}>
       <FlatList
-        data={logItems}
+        data={logItems.items}
         renderItem={({ item }) => <LogListItem logItem={item} />}
         keyExtractor={(item) => item.id.toString()}
       />

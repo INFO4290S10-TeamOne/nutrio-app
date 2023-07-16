@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { Box, Heading, Text, ScrollView, Icon, View } from 'native-base';
 import { Octicons } from '@expo/vector-icons';
