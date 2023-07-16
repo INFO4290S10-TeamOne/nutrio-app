@@ -26,10 +26,10 @@ export type LogsStackParamList = {
   LogHistory: undefined;
   LogDetails: {
     date: string;
-    logItems: Log[];
+    logItems: Log;
   };
 };
 
 export type RecipeDetailsRouteProps = RouteProp<{ params: { id: number; title: string } }>;
 
-export type LogDetailsRouteProps = RouteProp<{ params: { date: string; logItems: Log[] } }>;
+export type LogDetailsRouteProps = RouteProp<{ params: { date: string; logItems: Log } }>;

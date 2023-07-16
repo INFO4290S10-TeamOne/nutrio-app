@@ -3,20 +3,20 @@ import { HStack, VStack, Box, Text, Avatar, IconButton, Icon, Spacer } from 'nat
 import { Feather } from '@expo/vector-icons';
 import { Log } from '../types/logs';
 import { TabParamList } from '../types/routes';
-import LogItem from './LogItem';
+import LogListItem from './LogListItem';
 
 interface LogListProps {
   date: string;
-  log: Log[];
+  log: Log;
 }
 
 const LogList = ({ date, log }: LogListProps) => {
   const navigation = useNavigation<NavigationProp<TabParamList>>();
 
-  const truncateLog = log.length > 3;
-  const slicedLog = truncateLog ? log.slice(0, 3) : log;
+  const truncateLog = log.items.length > 3;
+  const slicedLog = truncateLog ? log.items.slice(0, 3) : log.items;
 
-  if (!log.length)
+  if (!log.items.length)
     return (
       <Box
         borderBottomWidth='1'
@@ -42,7 +42,7 @@ const LogList = ({ date, log }: LogListProps) => {
   return (
     <>
       {slicedLog.map((item) => (
-        <LogItem key={item.id} logItem={item} />
+        <LogListItem key={item.id} logItem={item} />
       ))}
       {truncateLog ? (
         <Box
@@ -71,7 +71,7 @@ const LogList = ({ date, log }: LogListProps) => {
               color: 'warmGray.200',
             }}
           >
-            {log.length - 3} more items...
+            {log.items.length - 3} more items...
           </Text>
         </Box>
       ) : null}
