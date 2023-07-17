@@ -25,7 +25,7 @@ const LogHistoryScreen = () => {
                   screen: 'LogsStack',
                   params: {
                     screen: 'LogDetails',
-                    params: { date: logItem.date, id: logItem.id, logItems: logItem },
+                    params: { date: logItem.date, id: logItem.id },
                   },
                 })
               }
@@ -33,7 +33,7 @@ const LogHistoryScreen = () => {
               <Text>{logItem.date} </Text>
               <Icon as={Octicons} name='chevron-right' size='lg' />
             </Heading>
-            <LogList date={logItem.date} key={logItem.id} log={logItem} />
+            <LogList date={logItem.date} key={logItem.id} id={logItem.id} />
           </Box>
         ))}
       </Box>

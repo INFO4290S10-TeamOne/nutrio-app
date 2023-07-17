@@ -47,16 +47,6 @@ const LogListItem = ({ logItem }: LogItemProps) => {
         </VStack>
         <Spacer />
         <VStack>
-          <Text
-            fontSize='xs'
-            _dark={{
-              color: 'warmGray.50',
-            }}
-            color='coolGray.800'
-            alignSelf='flex-start'
-          >
-            {logItem.date}
-          </Text>
           <IconButton
             alignSelf={'flex-end'}
             size='md'

@@ -4,12 +4,34 @@ import LogDetailsScreen from '../screens/LogDetailsScreen';
 import { LogsStackParamList, TabParamList } from '../types/routes';
 import HeaderButton from './HeaderButton';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import AddLogModal from './AddLogModal';
+import EditLogsModal from './EditLogsModal';
+import { useLogsStore, useEditLogsStore } from '../store/LogsStore';
+import { Log } from '../types/logs';
 
 const Stack = createStackNavigator<LogsStackParamList>();
 
+const generateNewLogId = (logs: Log[]) => {
+  const ids = logs.map((log) => log.id);
+  const maxId = Math.max(...ids);
+  return maxId + 1;
+};
+
 const LogsStack = () => {
   const navigation = useNavigation<NavigationProp<TabParamList>>();
+  const { logs, addLog, editLog } = useLogsStore();
+  const { logDate, editedLogs } = useEditLogsStore();
+
+  const handleSave = (params: { edit: true; id: number } | { edit: false }) => {
+    if (params.edit) {
+      editLog(params.id, editedLogs);
+    } else {
+      addLog({
+        id: generateNewLogId(logs),
+        date: logDate,
+        items: editedLogs,
+      });
+    }
+  };
 
   return (
     <Stack.Navigator id='LogStack'>
@@ -65,10 +87,12 @@ const LogsStack = () => {
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen
           name='AddLog'
-          component={AddLogModal}
+          component={EditLogsModal}
           options={({ route }) => ({
             title: route.params.edit ? 'Edit Log' : 'Add Log',
-            headerRight: () => <HeaderButton iconName='save' onPress={() => console.log('save')} />,
+            headerRight: () => (
+              <HeaderButton iconName='save' onPress={() => handleSave(route.params)} />
+            ),
           })}
         />
       </Stack.Group>

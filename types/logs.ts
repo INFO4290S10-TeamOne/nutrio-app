@@ -6,7 +6,6 @@ export type Log = {
 
 export type LogItem = {
   id: number;
-  date: string;
   itemName: string;
   servings: number;
   thumbnail: string;

@@ -3,14 +3,19 @@ import { Box, Text } from 'native-base';
 import { Log } from '../types/logs';
 import { TabParamList } from '../types/routes';
 import LogListItem from './LogListItem';
+import { useLogsStore } from '../store/LogsStore';
 
 interface LogListProps {
   date: string;
-  log: Log;
+  id: number;
 }
 
-const LogList = ({ date, log }: LogListProps) => {
+const LogList = ({ date, id }: LogListProps) => {
   const navigation = useNavigation<NavigationProp<TabParamList>>();
+  const { logs } = useLogsStore();
+  const log = logs.find((log) => log.id === id);
+
+  if (!log) return null;
 
   const truncateLog = log.items.length > 3;
   const slicedLog = truncateLog ? log.items.slice(0, 3) : log.items;
@@ -60,7 +65,7 @@ const LogList = ({ date, log }: LogListProps) => {
                 screen: 'LogsStack',
                 params: {
                   screen: 'LogDetails',
-                  params: { date, id: log.id, logItems: log },
+                  params: { date, id: log.id },
                 },
               })
             }

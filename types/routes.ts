@@ -27,7 +27,6 @@ export type LogsStackParamList = {
   LogDetails: {
     date: string;
     id: number;
-    logItems: Log;
   };
   AddLog:
     | {
@@ -42,7 +41,7 @@ export type LogsStackParamList = {
 export type RecipeDetailsRouteProps = RouteProp<{ params: { id: number; title: string } }>;
 
 export type LogDetailsRouteProps = RouteProp<{
-  params: { date: string; id: number; logItems: Log };
+  params: { date: string; id: number };
 }>;
 
 export type AddLogRouteProps = RouteProp<{
