@@ -7,5 +7,5 @@ import HomeScreen from '../HomeScreen';
 it('renders the home screen', () => {
   render(<NativeBaseWrapper children={<HomeScreen />} />);
 
-  expect(screen.getByText('Home!')).toBeDefined();
+  expect(screen.getByText('Welcome!')).toBeDefined();
 });
