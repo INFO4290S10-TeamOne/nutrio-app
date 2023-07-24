@@ -1,12 +1,12 @@
 import { Avatar, Box, HStack, Icon, IconButton, Spacer, VStack, Text } from 'native-base';
 import { Feather } from '@expo/vector-icons';
-import { Log } from '../types/logs';
+import { LogItem } from '../types/logs';
 
 interface LogItemProps {
-  logItem: Log;
+  logItem: LogItem;
 }
 
-const LogItem = ({ logItem }: LogItemProps) => {
+const LogListItem = ({ logItem }: LogItemProps) => {
   return (
     <Box
       key={logItem.id}
@@ -47,16 +47,6 @@ const LogItem = ({ logItem }: LogItemProps) => {
         </VStack>
         <Spacer />
         <VStack>
-          <Text
-            fontSize='xs'
-            _dark={{
-              color: 'warmGray.50',
-            }}
-            color='coolGray.800'
-            alignSelf='flex-start'
-          >
-            {logItem.date.toLocaleTimeString()}
-          </Text>
           <IconButton
             alignSelf={'flex-end'}
             size='md'
@@ -71,4 +61,4 @@ const LogItem = ({ logItem }: LogItemProps) => {
   );
 };
 
-export default LogItem;
+export default LogListItem;

@@ -1,5 +1,5 @@
 import { Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { useRecipeSearch } from '../store/RecipeSearch';
+import { useRecipeSearch } from '../store/RecipeSearchStore';
 
 const CuisineShortcut = ({ title, image }: { title: string; image: any }) => {
   const { setSearch } = useRecipeSearch();

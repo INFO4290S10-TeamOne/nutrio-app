@@ -1,6 +1,6 @@
 import { VStack, Box, Divider, Input, Icon } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
-import { useRecipeSearch } from '../store/RecipeSearch';
+import { useRecipeSearch } from '../store/RecipeSearchStore';
 
 const SearchBar = () => {
   const { search, setSearch } = useRecipeSearch();
