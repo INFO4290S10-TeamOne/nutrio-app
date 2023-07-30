@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
@@ -18,40 +19,44 @@ const TabBarIcon = (props: { name: any; color: string; size: number }) => {
 };
 
 export default function App() {
+  const queryClient = new QueryClient();
+
   return (
-    <NativeBaseProvider>
-      <NavigationContainer>
-        <Tab.Navigator
-          id='TabBar'
-          screenOptions={({ route }) => ({
-            tabBarIcon: ({ color, size }) => {
-              const iconName = getTabBarIcon(route.name);
-              return TabBarIcon({ name: iconName, color, size });
-            },
-            tabBarActiveTintColor: '#8b5cf6',
-          })}
-        >
-          <Tab.Screen
-            options={{
-              headerShown: false,
-              tabBarLabel: 'Home',
-            }}
-            name='HomeStack'
-            component={HomeStack}
-          />
-          <Tab.Screen
-            options={{
-              headerShown: false,
-              tabBarLabel: 'Recipes',
-            }}
-            name='RecipesStack'
-            component={RecipesStack}
-          />
-          <Tab.Screen name='Scale' component={ScaleScreen} />
-          <Tab.Screen name='Goals' component={GoalsScreen} />
-          <Tab.Screen name='Settings' component={SettingsScreen} />
-        </Tab.Navigator>
-      </NavigationContainer>
-    </NativeBaseProvider>
+    <QueryClientProvider client={queryClient}>
+      <NativeBaseProvider>
+        <NavigationContainer>
+          <Tab.Navigator
+            id='TabBar'
+            screenOptions={({ route }) => ({
+              tabBarIcon: ({ color, size }) => {
+                const iconName = getTabBarIcon(route.name);
+                return TabBarIcon({ name: iconName, color, size });
+              },
+              tabBarActiveTintColor: '#8b5cf6',
+            })}
+          >
+            <Tab.Screen
+              options={{
+                headerShown: false,
+                tabBarLabel: 'Home',
+              }}
+              name='HomeStack'
+              component={HomeStack}
+            />
+            <Tab.Screen
+              options={{
+                headerShown: false,
+                tabBarLabel: 'Recipes',
+              }}
+              name='RecipesStack'
+              component={RecipesStack}
+            />
+            <Tab.Screen name='Scale' component={ScaleScreen} />
+            <Tab.Screen name='Goals' component={GoalsScreen} />
+            <Tab.Screen name='Settings' component={SettingsScreen} />
+          </Tab.Navigator>
+        </NavigationContainer>
+      </NativeBaseProvider>
+    </QueryClientProvider>
   );
 }
