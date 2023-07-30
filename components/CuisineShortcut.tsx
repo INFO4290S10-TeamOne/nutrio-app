@@ -1,11 +1,19 @@
 import { Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useRecipeSearch } from '../store/RecipeSearchStore';
+import { useSpoonacularSearch } from '../hooks/useSpoonacularSearch';
 
 const CuisineShortcut = ({ title, image }: { title: string; image: any }) => {
   const { setSearch } = useRecipeSearch();
+  const { refetch } = useSpoonacularSearch(title);
+
+  const handleSearch = () => {
+    setSearch(title);
+
+    refetch();
+  };
 
   return (
-    <TouchableOpacity style={styles.button} onPress={() => setSearch(title)}>
+    <TouchableOpacity style={styles.button} onPress={handleSearch}>
       <Image source={image} style={{ width: 50, height: 50, resizeMode: 'cover' }} />
       <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>

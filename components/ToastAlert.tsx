@@ -22,7 +22,6 @@ export const ToastAlert = ({
 
   return (
     <Alert
-      marginBottom={8}
       maxWidth='100%'
       alignSelf='center'
       flexDirection='row'
@@ -64,56 +63,3 @@ export const ToastAlert = ({
     </Alert>
   );
 };
-
-// const Exmaple = () => {
-//   const ToastDetails = [
-//     {
-//       title: 'Account verified',
-//       variant: 'solid',
-//       description: 'Thanks for signing up with us.',
-//       isClosable: true,
-//     },
-//     {
-//       title: 'Something went wrong',
-//       variant: 'subtle',
-//       description: 'Please create a support ticket from the support page',
-//     },
-//     {
-//       title: 'Network connection restored',
-//       variant: 'left-accent',
-//       description: 'This is to inform you that your network connectivity is restored',
-//       isClosable: true,
-//     },
-//     {
-//       title: 'Invalid email address',
-//       variant: 'top-accent',
-//       description: 'Please enter a valid email address',
-//     },
-//     {
-//       title: 'Invalid email address',
-//       variant: 'outline',
-//       description: 'Please enter a valid email address',
-//     },
-//   ];
-
-//   return (
-//     <Center>
-//       <VStack space={2}>
-//         {ToastDetails.map((item, index) => (
-//           <Button
-//             key={index}
-//             onPress={() =>
-//               toast.show({
-//                 render: ({ id }) => {
-//                   return <ToastAlert id={id} {...item} />;
-//                 },
-//               })
-//             }
-//           >
-//             {item.variant}
-//           </Button>
-//         ))}
-//       </VStack>
-//     </Center>
-//   );
-// };
