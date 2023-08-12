@@ -5,13 +5,14 @@ export type TabParamList = {
   HomeStack: NavigatorScreenParams<HomeStackParamList>;
   RecipesStack: NavigatorScreenParams<RecipeStackParamList>;
   Scale: undefined;
-  Goals: undefined;
+  Goal: undefined;
   Settings: undefined;
 };
 
 export type HomeStackParamList = {
   Home: undefined;
   LogsStack: NavigatorScreenParams<LogsStackParamList>;
+  goalEdit: undefined;
 };
 
 export type RecipeStackParamList = {

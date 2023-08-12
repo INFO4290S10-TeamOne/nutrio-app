@@ -1,6 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen';
 import LogsStack from './LogsStack';
+import GoalEditScreen from '../screens/GoalEditScreen';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,14 @@ const HomeStack = () => {
         name='LogsStack'
         component={LogsStack}
       />
+          <Stack.Screen
+             options={{
+              title: 'Goals Editting',
+            }}
+          name='goalEdit'
+          component={GoalEditScreen}
+         
+        />
     </Stack.Navigator>
   );
 };

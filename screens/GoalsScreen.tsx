@@ -1,30 +1,33 @@
-import { StyleSheet, View, Text } from 'react-native';
-import { useState } from 'react';
-import { counter } from '@fortawesome/fontawesome-svg-core';
+import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
+//import { counter } from '@fortawesome/fontawesome-svg-core';
+import { useGoalStore } from '../store/GoalStore';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { TabParamList } from '../types/routes';
 
 const GoalsScreen = () => {
-  const[calGoal,setCal] = useState('2000')
-  const[proGoal,setPro] = useState('2000')
-  const[fatGoal,setFat] = useState('2000')
-  const[calCurr,setCCal] = useState('900')
-  const[proCurr,setCPro] = useState('900')
-  const[fatCurr,setCfat] = useState('900')
-
+  const navigation = useNavigation<NavigationProp<TabParamList>>();
+  const { goal } = useGoalStore();
+  const pressHandler = () => {
+      navigation.navigate('HomeStack', {
+      screen: 'goalEdit',
+        })
+  }
   return (
     <View style={styles.Header}>
       <Text style={styles.Headfont}>Goals!</Text>
-      <View style={styles.Body}>
+      <TouchableOpacity onPress={pressHandler} style={styles.Body}>
         <Text style={styles.bodytext}> Calories / day </Text>
-        <Text style={styles.counter}> {calCurr} / {calGoal}   </Text>
-    </View>
-    <View style={styles.Body}>
+        <Text style={styles.counter}>0 / {goal.maxCal} </Text>
+       </TouchableOpacity>
+   
+    <TouchableOpacity style={styles.Body}>
     <Text  style={styles.bodytext} > Protein / day </Text>
-        <Text style={styles.counter}> {proCurr} / {proGoal}   </Text>
-    </View>
-    <View style={styles.Body}>
+        <Text style={styles.counter}> 0 / {goal.maxPro}  </Text>
+    </TouchableOpacity>
+    <TouchableOpacity style={styles.Body}>
     <Text style={styles.bodytext}> Fat / day </Text>
-        <Text style={styles.counter}> {fatCurr} / {fatGoal}   </Text>
-    </View>
+        <Text style={styles.counter}> 0 / {goal.maxFat}   </Text>
+    </TouchableOpacity>
     </View>
 
     
@@ -33,7 +36,7 @@ const GoalsScreen = () => {
 
 const styles = StyleSheet.create({
   Header: {
-    margin: 30,
+    margin: 40,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -43,12 +46,15 @@ const styles = StyleSheet.create({
     fontSize: 32,
   },
   Body:{
-      flex: 2,
-      justifyContent: 'center',
+      
+      flex: 1,
+      margin: 20,
       alignItems: 'center',
+      padding: 20,
+      
   }, 
   bodytext:{
-    fontSize: 12,
+    fontSize: 20,
   },
   counter:{
     fontSize: 20,
