@@ -5,7 +5,7 @@ Goal should be saved in local storage and be accessible as a global state (zusta
 Since we are using AsyncStorage, goals must be stored as a `JSON` format
 
 ## Goal object
-```JSON
+```
 {
   maxCalories: number,
   maxProtein: number,
@@ -15,9 +15,10 @@ Since we are using AsyncStorage, goals must be stored as a `JSON` format
 *Values will be stored as strings as JSON can only take string values*
 
 ## Operations needed
-- `getGoal(): () => Goal`: should return the Goal object from zustand
+- `getGoal() => Goal`: Retrieves the Goal object from zustand. We dont need an explicit method for this as we can access it via zustand.
+  - `const { goal } = useGoalStore()`
 
-- `setGoal: (newGoal: {object}) => Goal`: should overwrite the previous Goal in zustand and return the newGoal object
+- `setGoal(newGoal: {object}) => Goal`: should overwrite the previous Goal in zustand and return the newGoal object
 
 ## Pseudocode
 ```typescript

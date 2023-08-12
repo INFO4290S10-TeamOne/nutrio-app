@@ -5,21 +5,23 @@ To get proper nutrition tracking, there should be a way to sum up the total nutr
 We should also store all logs in AsyncStorage.
 
 ## Logs Object
-```JSON
+```
 [
   {
     id: number,
     date: Date,
     servings: number,
-    item: {
-      id: number
-      name: string,
-      picture: string,
-      url: string,
-      nutrients: {
-        calories: number,
-        ... // Other nutrients
-      }
+    items: [
+        {
+          id: number
+          name: string,
+          picture: string,
+          url: string,
+          nutrients: {
+            calories: number,
+            ... // Other nutrients
+        },
+      ],
       ... // Other info
     }
   }
@@ -29,7 +31,12 @@ We should also store all logs in AsyncStorage.
 
 *The Logs object is subject to change*
 
-**For the purposes of goals tracking we are only interested in the servings and nutrition.**
+## Operations needed
+
+- `getLogs() => Logs[]`: Retrieves all the logs in local storage.  We dont need an explicit method for this as we can access it via zustand.
+  - `const { logs } = useLogsStore()`
+- `addLog(log: Log) => void`: Adds a new entry to the logs
+- `editLog(id: number, logItems: LogItem[]) => void`: Edits the items consumed in the log entry
 
 ## Pseudocode
 
@@ -76,6 +83,9 @@ export const useLogsStore = create<LogsStore>()(
 ```
 
 ## Pseudocode for getting nutrients consumed today
+
+**For the purposes of goals tracking we are only interested in the servings and nutrition.**
+
 We can calculate the total amount of nutrients consumed per day with the following logic
 
 ```typescript
