@@ -7,14 +7,18 @@ import { useRecipeSearch } from '../store/RecipeSearchStore';
 import { useSpoonacularSearch } from '../hooks/useSpoonacularSearch';
 
 const cuisines = [
-  { id: 1, title: 'Italian', image: require('../assets/favicon.png') },
-  { id: 2, title: 'Chinese', image: require('../assets/favicon.png') },
-  { id: 3, title: 'Sushi', image: require('../assets/favicon.png') },
-  { id: 4, title: 'American', image: require('../assets/favicon.png') },
-  { id: 5, title: 'Chicken', image: require('../assets/favicon.png') },
-  { id: 6, title: 'Burger', image: require('../assets/favicon.png') },
-  { id: 7, title: 'Desserts', image: require('../assets/favicon.png') },
-  { id: 8, title: 'Asian', image: require('../assets/favicon.png') },
+  {
+    id: 1,
+    title: 'Italian',
+    image: 'https://img.icons8.com/fluency/96/spaghetti.png',
+  },
+  { id: 2, title: 'Chinese', image: 'https://img.icons8.com/fluency/96/dim-sum.png' },
+  { id: 3, title: 'Sushi', image: 'https://img.icons8.com/fluency/96/salmon-sushi.png' },
+  { id: 4, title: 'American', image: 'https://img.icons8.com/fluency/96/bagel.png' },
+  { id: 5, title: 'Chicken', image: 'https://img.icons8.com/fluency/96/kfc-chicken.png' },
+  { id: 6, title: 'Burger', image: 'https://img.icons8.com/fluency/96/hamburger.png' },
+  { id: 7, title: 'Desserts', image: 'https://img.icons8.com/fluency/96/cheesecake.png' },
+  { id: 8, title: 'Asian', image: 'https://img.icons8.com/fluency/96/noodles.png' },
 ];
 
 const RecipesSearch = () => {

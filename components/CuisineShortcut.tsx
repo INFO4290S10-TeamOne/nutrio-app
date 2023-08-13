@@ -14,7 +14,10 @@ const CuisineShortcut = ({ title, image }: { title: string; image: any }) => {
 
   return (
     <TouchableOpacity style={styles.button} onPress={handleSearch}>
-      <Image source={image} style={{ width: 50, height: 50, resizeMode: 'cover' }} />
+      <Image
+        source={{ uri: image }}
+        style={{ width: 50, height: 50, resizeMode: 'cover', marginBottom: 15 }}
+      />
       <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>
   );
@@ -38,7 +41,7 @@ const styles = StyleSheet.create({
   },
   text: {
     position: 'absolute',
-    bottom: 5,
+    bottom: 7,
     fontSize: 14,
   },
 });
