@@ -12,17 +12,64 @@ import {
   IconButton,
   AddIcon,
   MinusIcon,
+  useToast,
 } from 'native-base';
+import { ToastAlert } from '../components/ToastAlert';
 import { useRoute } from '@react-navigation/native';
 import { RecipeDetailsRouteProps } from '../types/routes';
-
 import { useSpoonacularRecipeInformation } from '../hooks/useSpoonacularRecipeInformation';
+import { useLogsStore } from '../store/LogsStore';
+import { Log } from '../types/logs';
 
 const RecipeDetailsScreen = () => {
+  const toast = useToast();
   const { id, title } = useRoute<RecipeDetailsRouteProps>().params;
+  const { data: recipeDetails, isLoading, isError } = useSpoonacularRecipeInformation(id);
+  const { logs, addLog, editLog } = useLogsStore();
   const [showFullNutrients, setShowFullNutrients] = useState(false);
   const [numServings, setNumServings] = useState(1);
-  const { data: recipeDetails, isLoading, isError } = useSpoonacularRecipeInformation(id);
+
+  const addToLog = () => {
+    if (!recipeDetails) return;
+
+    const hasLogsForToday = logs.some((log) => log.date === new Date().toLocaleDateString());
+
+    // Create new log entry if there are no logs for today
+    if (!hasLogsForToday) {
+      // Create a new id
+      const ids = logs?.map((item) => item.id) ?? [0];
+      const maxId = Math.max(...ids);
+
+      const newLogEntry: Log = {
+        id: maxId + 1,
+        date: new Date().toLocaleDateString(),
+        items: [{ ...recipeDetails, servings: numServings }],
+      };
+
+      addLog(newLogEntry);
+    } else {
+      // Add to existing log entry
+      const existingLog = logs.find((log) => log.date === new Date().toLocaleDateString());
+
+      if (!existingLog) return;
+
+      const updatedItems = [...existingLog.items, { ...recipeDetails, servings: numServings }];
+
+      editLog(existingLog.id, updatedItems);
+    }
+
+    toast.show({
+      render: ({ id }) => (
+        <ToastAlert
+          id={id}
+          title='Success!'
+          description='Item added to log'
+          variant='top-accent'
+          status='success'
+        />
+      ),
+    });
+  };
 
   const handleMinus = () => {
     if (numServings > 1) {
@@ -128,7 +175,7 @@ const RecipeDetailsScreen = () => {
                   icon={<AddIcon />}
                 />
               </HStack>
-              <Button size='lg' colorScheme='violet' onPress={() => {}} w={'60%'}>
+              <Button size='lg' colorScheme='violet' onPress={addToLog} w={'60%'}>
                 Add to log
               </Button>
             </HStack>

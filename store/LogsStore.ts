@@ -9,6 +9,7 @@ interface LogsStore {
   editLog: (id: number, logItems: LogItem[]) => void;
   hasHydrated: boolean;
   setHasHydrated: (hasHydrated: boolean) => void;
+  clearLogs: () => void;
 }
 
 export const useLogsStore = create<LogsStore>()(
@@ -31,6 +32,7 @@ export const useLogsStore = create<LogsStore>()(
       },
       hasHydrated: false,
       setHasHydrated: (hasHydrated: boolean) => set({ hasHydrated }),
+      clearLogs: () => set({ logs: [] }),
     }),
     {
       name: 'logs-storage',
@@ -48,7 +50,7 @@ interface EditLogsStore {
   setLogDate: (logDate: string) => void;
   editedLogs: LogItem[];
   setEditedLogs: (editedLogs: LogItem[]) => void;
-  updateItem: (id: number, field: 'itemName' | 'servings' | 'thumbnail', newValue: string) => void;
+  updateItem: (id: number, field: 'title' | 'servings' | 'image', newValue: string) => void;
   deleteItem: (id: number) => void;
   addNewItem: () => void;
 }
@@ -59,13 +61,13 @@ export const useEditLogsStore = create<EditLogsStore>((set, get) => ({
   editedLogs: [
     {
       id: 0,
-      itemName: '',
+      title: '',
       servings: 0,
-      thumbnail: '',
+      image: '',
     },
   ],
   setEditedLogs: (editedLogs: Omit<LogItem, 'date'>[]) => set({ editedLogs }),
-  updateItem: (id: number, field: 'itemName' | 'servings' | 'thumbnail', newValue: string) => {
+  updateItem: (id: number, field: 'title' | 'servings' | 'image', newValue: string) => {
     const newLogs: LogItem[] = get().editedLogs.map((item) => {
       if (item.id === id) {
         return {
@@ -90,9 +92,9 @@ export const useEditLogsStore = create<EditLogsStore>((set, get) => ({
         ...get().editedLogs,
         {
           id: generateNewId(get().editedLogs),
-          itemName: '',
+          title: '',
           servings: 0,
-          thumbnail: '',
+          image: '',
         },
       ],
     }),

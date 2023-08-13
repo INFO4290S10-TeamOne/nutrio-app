@@ -23,10 +23,10 @@ const LogListItem = ({ logItem }: LogItemProps) => {
         <Avatar
           size='48px'
           source={{
-            uri: logItem.thumbnail,
+            uri: logItem.image,
           }}
         />
-        <VStack>
+        <VStack maxW={'70%'}>
           <Text
             _dark={{
               color: 'warmGray.50',
@@ -34,7 +34,7 @@ const LogListItem = ({ logItem }: LogItemProps) => {
             color='coolGray.800'
             bold
           >
-            {logItem.itemName}
+            {logItem.title}
           </Text>
           <Text
             color='coolGray.600'
