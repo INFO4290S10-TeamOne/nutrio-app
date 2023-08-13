@@ -4,9 +4,9 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 
 
 interface Goal{
-    maxCal: string;
-    maxPro: string;
-    maxFat: string;
+    maxCalorie: number;
+    maxProteins: number;
+    maxFats: number;
 }
 
 interface GoalStore{
@@ -15,9 +15,9 @@ interface GoalStore{
 }
 
 const defaultGoal: Goal = {
-    maxCal: '2000',
-    maxPro: '100g',
-    maxFat: '100g',
+    maxCalorie: 2000,
+    maxProteins: 100,
+    maxFats: 100,
 }
 
 export const useGoalStore = create<GoalStore>()(
@@ -33,3 +33,4 @@ export const useGoalStore = create<GoalStore>()(
         }
     )
 )
+

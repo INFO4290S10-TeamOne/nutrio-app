@@ -12,21 +12,23 @@ const GoalsScreen = () => {
       screen: 'goalEdit',
         })
   }
+ 
   return (
+   
     <View style={styles.Header}>
       <Text style={styles.Headfont}>Goals!</Text>
       <TouchableOpacity onPress={pressHandler} style={styles.Body}>
         <Text style={styles.bodytext}> Calories / day </Text>
-        <Text style={styles.counter}>0 / {goal.maxCal} </Text>
+        <Text style={styles.counter}>0 / {goal.maxCalorie} </Text>
        </TouchableOpacity>
    
     <TouchableOpacity style={styles.Body}>
     <Text  style={styles.bodytext} > Protein / day </Text>
-        <Text style={styles.counter}> 0 / {goal.maxPro}  </Text>
+        <Text style={styles.counter}> 0 / {goal.maxProteins}  </Text>
     </TouchableOpacity>
     <TouchableOpacity style={styles.Body}>
     <Text style={styles.bodytext}> Fat / day </Text>
-        <Text style={styles.counter}> 0 / {goal.maxFat}   </Text>
+        <Text style={styles.counter}> 0 / {goal.maxFats}   </Text>
     </TouchableOpacity>
     </View>
 
