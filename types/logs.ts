@@ -6,4 +6,9 @@ export type Log = {
   items: LogItem[];
 };
 
-export type LogItem = Partial<SpoonacularRecipeInformation> & { servings: number; id: number };
+export type LogItem = Partial<SpoonacularRecipeInformation> & {
+  servings: number;
+  id: number;
+  title: string;
+  image: string;
+};
