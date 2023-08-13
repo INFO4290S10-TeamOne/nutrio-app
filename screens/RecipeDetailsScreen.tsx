@@ -9,6 +9,9 @@ import {
   Spinner,
   Heading,
   Button,
+  IconButton,
+  AddIcon,
+  MinusIcon,
 } from 'native-base';
 import { useRoute } from '@react-navigation/native';
 import { RecipeDetailsRouteProps } from '../types/routes';
@@ -18,7 +21,14 @@ import { useSpoonacularRecipeInformation } from '../hooks/useSpoonacularRecipeIn
 const RecipeDetailsScreen = () => {
   const { id, title } = useRoute<RecipeDetailsRouteProps>().params;
   const [showFullNutrients, setShowFullNutrients] = useState(false);
+  const [numServings, setNumServings] = useState(1);
   const { data: recipeDetails, isLoading, isError } = useSpoonacularRecipeInformation(id);
+
+  const handleMinus = () => {
+    if (numServings > 1) {
+      setNumServings(numServings - 1);
+    }
+  };
 
   if (isError) {
     return (
@@ -98,9 +108,30 @@ const RecipeDetailsScreen = () => {
             </VStack>
           </VStack>
           <VStack width='100%' space={4} px='4' my='4'>
-            <Button size='lg' colorScheme='violet' onPress={() => {}}>
-              Add to log
-            </Button>
+            <HStack space={2} justifyContent='center'>
+              <HStack space={2} alignItems='center'>
+                <IconButton
+                  onPress={handleMinus}
+                  colorScheme='coolGray'
+                  variant='outline'
+                  icon={<MinusIcon />}
+                />
+                <Box paddingX={2} w={10}>
+                  <Text fontSize='lg' textAlign={'center'}>
+                    {numServings}
+                  </Text>
+                </Box>
+                <IconButton
+                  onPress={() => setNumServings(numServings + 1)}
+                  colorScheme='coolGray'
+                  variant='outline'
+                  icon={<AddIcon />}
+                />
+              </HStack>
+              <Button size='lg' colorScheme='violet' onPress={() => {}} w={'60%'}>
+                Add to log
+              </Button>
+            </HStack>
           </VStack>
         </VStack>
       ) : (
