@@ -6,13 +6,13 @@ import { TabParamList } from '../types/routes';
 
 const GoalsScreen = () => {
   const navigation = useNavigation<NavigationProp<TabParamList>>();
-  const { goal } = useGoalStore();
+  const { goal, setGoal } = useGoalStore();
   const pressHandler = () => {
       navigation.navigate('HomeStack', {
       screen: 'goalEdit',
         })
   }
- 
+
   return (
    
     <View style={styles.Header}>
