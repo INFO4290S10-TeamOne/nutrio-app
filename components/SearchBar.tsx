@@ -47,6 +47,7 @@ const SearchBar = ({ handleSearch }: { handleSearch: () => void }) => {
           fontSize={16}
           value={search}
           onChangeText={(text) => setSearch(text)}
+          onSubmitEditing={handleSearch}
         />
       </VStack>
     </VStack>
