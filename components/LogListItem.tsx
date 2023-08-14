@@ -1,12 +1,16 @@
 import { Avatar, Box, HStack, Icon, IconButton, Spacer, VStack, Text } from 'native-base';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
 import { LogItem } from '../types/logs';
+import { TabParamList } from '../types/routes';
 
 interface LogItemProps {
   logItem: LogItem;
 }
 
 const LogListItem = ({ logItem }: LogItemProps) => {
+  const navigation = useNavigation<NavigationProp<TabParamList>>();
+
   return (
     <Box
       key={logItem.id}
@@ -23,10 +27,10 @@ const LogListItem = ({ logItem }: LogItemProps) => {
         <Avatar
           size='48px'
           source={{
-            uri: logItem.thumbnail,
+            uri: logItem.image,
           }}
         />
-        <VStack>
+        <VStack maxW={'70%'}>
           <Text
             _dark={{
               color: 'warmGray.50',
@@ -34,7 +38,7 @@ const LogListItem = ({ logItem }: LogItemProps) => {
             color='coolGray.800'
             bold
           >
-            {logItem.itemName}
+            {logItem.title}
           </Text>
           <Text
             color='coolGray.600'
@@ -53,7 +57,12 @@ const LogListItem = ({ logItem }: LogItemProps) => {
             colorScheme={'violet'}
             rounded='full'
             icon={<Icon as={Feather} name='info' />}
-            // onPress={() => navigation.navigate('Home')}
+            onPress={() =>
+              navigation.navigate('RecipesStack', {
+                screen: 'RecipeDetails',
+                params: { id: logItem.id, title: logItem.title },
+              })
+            }
           />
         </VStack>
       </HStack>

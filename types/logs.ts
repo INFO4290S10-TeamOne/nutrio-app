@@ -1,12 +1,14 @@
+import { SpoonacularRecipeInformation } from './spoonacular';
+
 export type Log = {
   id: number;
   date: string;
   items: LogItem[];
 };
 
-export type LogItem = {
-  id: number;
-  itemName: string;
+export type LogItem = Partial<SpoonacularRecipeInformation> & {
   servings: number;
-  thumbnail: string;
+  id: number;
+  title: string;
+  image: string;
 };
