@@ -6,5 +6,5 @@ import ScaleScreen from '../ScaleScreen';
 it('renders the scale screen', () => {
   render(<ScaleScreen />);
 
-  expect(screen.getByText('Scale!')).toBeDefined();
+  expect(screen.getByText('0.g')).toBeDefined();
 });
