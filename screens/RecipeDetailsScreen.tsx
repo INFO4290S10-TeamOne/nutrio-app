@@ -147,8 +147,8 @@ const RecipeDetailsScreen = () => {
                 onPress={() => setShowFullNutrients(!showFullNutrients)}
               >
                 {showFullNutrients
-                  ? 'Show full nutrient list'
-                  : 'Hide full nutrient list'}
+                  ? 'Hide full nutrient list'
+                  : 'Show full nutrient list'}
               </Button>
             </VStack>
             <VStack width="100%" space={4}>
