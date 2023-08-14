@@ -16,11 +16,11 @@ const LogHistoryScreen = () => {
   return (
     <ScrollView>
       <Button onPress={() => clearLogs()}>Clear local storage</Button>
-      <Box flex='1' margin={5}>
+      <Box flex="1" margin={5}>
         {logs.map((logItem) => (
           <Box key={logItem.id} mb={10}>
             <Heading
-              alignItems='center'
+              alignItems="center"
               onPress={() =>
                 navigation.navigate('HomeStack', {
                   screen: 'LogsStack',
@@ -32,7 +32,7 @@ const LogHistoryScreen = () => {
               }
             >
               <Text>{logItem.date} </Text>
-              <Icon as={Octicons} name='chevron-right' size='lg' />
+              <Icon as={Octicons} name="chevron-right" size="lg" />
             </Heading>
             <LogList date={logItem.date} key={logItem.id} id={logItem.id} />
           </Box>
