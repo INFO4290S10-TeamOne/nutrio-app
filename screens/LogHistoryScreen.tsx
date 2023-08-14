@@ -15,8 +15,9 @@ const LogHistoryScreen = () => {
 
   return (
     <ScrollView>
-      <Button onPress={() => clearLogs()}>Clear local storage</Button>
+      {/* <Button onPress={() => clearLogs()}>Clear local storage</Button> */}
       <Box flex="1" margin={5}>
+        {!logs.length && <Heading textAlign={'center'}>No logs yet.</Heading>}
         {logs.map((logItem) => (
           <Box key={logItem.id} mb={10}>
             <Heading
