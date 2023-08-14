@@ -2,6 +2,7 @@ import 'react-native-gesture-handler/jestSetup';
 import { NavigationContainer } from '@react-navigation/native';
 import { NativeBaseProvider } from 'native-base';
 
+
 jest.mock('@fortawesome/react-native-fontawesome', () => ({
   FontAwesomeIcon: '',
 }));
@@ -18,3 +19,8 @@ export const NativeBaseWrapper = ({ children }: { children: JSX.Element }) => {
     </NativeBaseProvider>
   );
 };
+jest.mock('@react-native-async-storage/async-storage', () =>
+  require('@react-native-async-storage/async-storage/jest/async-storage-mock')
+);
+
+
