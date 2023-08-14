@@ -4,8 +4,14 @@ import { NativeBaseWrapper } from '../../jest/setup';
 
 import HomeScreen from '../HomeScreen';
 
-it('renders the home screen', () => {
-  render(<NativeBaseWrapper children={<HomeScreen />} />);
+describe('HomeScreen', () => {
+  it('renders the home screen', () => {
+    render(<NativeBaseWrapper children={<HomeScreen />} />);
+    expect(screen.getByText('Welcome!')).toBeDefined();
+  });
 
-  expect(screen.getByText('Welcome!')).toBeDefined();
+  it("Shows today's date", () => {
+    render(<NativeBaseWrapper children={<HomeScreen />} />);
+    expect(screen.getByText(new Date().toDateString())).toBeDefined();
+  });
 });
