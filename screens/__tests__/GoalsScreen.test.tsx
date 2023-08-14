@@ -6,5 +6,5 @@ import GoalsScreen from '../GoalsScreen';
 
 it('renders the goals screen', () => {
   render(<NativeBaseWrapper children={<GoalsScreen />} />);
-  expect(screen.getByText('Goals!')).toBeDefined();
+  expect(screen.getByText('Your daily Goals')).toBeDefined();
 });
