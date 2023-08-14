@@ -7,7 +7,6 @@ import HomeStack from './components/HomeStack';
 import RecipesStack from './components/RecipesStack';
 import ScaleScreen from './screens/ScaleScreen';
 import GoalsScreen from './screens/GoalsScreen';
-import SettingsScreen from './screens/SettingsScreen';
 import { getTabBarIcon } from './helpers/getTabBarIcon';
 import { NativeBaseProvider } from 'native-base';
 import { TabParamList } from './types/routes';
@@ -26,7 +25,7 @@ export default function App() {
       <NativeBaseProvider>
         <NavigationContainer>
           <Tab.Navigator
-            id='TabBar'
+            id="TabBar"
             screenOptions={({ route }) => ({
               tabBarIcon: ({ color, size }) => {
                 const iconName = getTabBarIcon(route.name);
@@ -40,7 +39,7 @@ export default function App() {
                 headerShown: false,
                 tabBarLabel: 'Home',
               }}
-              name='HomeStack'
+              name="HomeStack"
               component={HomeStack}
             />
             <Tab.Screen
@@ -48,12 +47,11 @@ export default function App() {
                 headerShown: false,
                 tabBarLabel: 'Recipes',
               }}
-              name='RecipesStack'
+              name="RecipesStack"
               component={RecipesStack}
             />
-            <Tab.Screen name='Scale' component={ScaleScreen} />
-            <Tab.Screen name='Goals' component={GoalsScreen} />
-            <Tab.Screen name='Settings' component={SettingsScreen} />
+            <Tab.Screen name="Scale" component={ScaleScreen} />
+            <Tab.Screen name="Goals" component={GoalsScreen} />
           </Tab.Navigator>
         </NavigationContainer>
       </NativeBaseProvider>
