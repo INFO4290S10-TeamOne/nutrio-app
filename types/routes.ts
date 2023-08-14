@@ -12,7 +12,6 @@ export type TabParamList = {
 export type HomeStackParamList = {
   Home: undefined;
   LogsStack: NavigatorScreenParams<LogsStackParamList>;
-  goalEdit: undefined;
 };
 
 export type RecipeStackParamList = {
@@ -39,7 +38,9 @@ export type LogsStackParamList = {
       };
 };
 
-export type RecipeDetailsRouteProps = RouteProp<{ params: { id: number; title: string } }>;
+export type RecipeDetailsRouteProps = RouteProp<{
+  params: { id: number; title: string };
+}>;
 
 export type LogDetailsRouteProps = RouteProp<{
   params: { date: string; id: number };
